@@ -6,12 +6,13 @@ import "./modules/meeting/module/user.model"
 import "./modules/meeting/module/meeting.model"
 import { connectDB } from "./config/database"
 import userRoutes from "./routes/user.routes"
-
+import { errorHandler } from "./middleware/error.middleware"
 
 const app = express()
 
 app.use(express.json())
 
+app.use(errorHandler)
 app.get("/",(req,res) => {
     res.send("Server is running..")
 })
