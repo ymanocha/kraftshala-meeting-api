@@ -83,6 +83,6 @@ export const deleteMeeting = async (id: number)=>{
       return null 
     }
 
-     await meeting.destroy()
-     return meeting
+     await Meeting.destroy()
+     return Meeting
 }
