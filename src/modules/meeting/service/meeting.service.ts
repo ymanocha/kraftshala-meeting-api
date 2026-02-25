@@ -38,8 +38,14 @@ export const listMeetings = async (filters: any) =>{
 
         }
     }
-    return await meeting.findAll({
+     const page = Number(filters.page) || 1
+     const limit = Number(filters.limit) || 10
+     const offset = (page - 1) * limit
+    
+     return await meeting.findAndCountAll({
         where,
+        limit,
+        offset,  
         order: [["startTime", "ASC"]]
     })
 }
